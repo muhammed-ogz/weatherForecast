@@ -6,12 +6,12 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <div className="flex bg-gray-900">
-        <div className="flex pl-6 justify-center items-center">
+        <div className="pl-6 pt-8 top-0">
           <Sidebar />
         </div>
-        <div className="flex flex-col flex-1">
+        <div>
           <Header />
-          <main className="flex-1 p-4">{children}</main>
+          <main className="p-4">{children}</main>
         </div>
       </div>
     </>
