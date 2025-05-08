@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="bg-gray-900 text-white p-4">
+    <header className="bg-gray-900 text-white p-2">
       <div className="container mx-auto flex pt-4 pl-20">
         <input
           type="search"

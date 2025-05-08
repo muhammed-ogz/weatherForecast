@@ -1,0 +1,41 @@
+{
+  "name": "weatherforecast",
+  "version": "1.0.0",
+  "description": "ReactJS + nodeJS based weather application",
+  "keywords": [
+    "weather",
+    "forecast",
+    "open",
+    "source",
+    "opensource",
+    "open-source"
+  ],
+  "homepage": "https://github.com/muhammed-ogz/weatherForecast#readme",
+  "bugs": {
+    "url": "https://github.com/muhammed-ogz/weatherForecast/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammed-ogz/weatherForecast.git"
+  },
+  "license": "ISC",
+  "author": "Muhammed Oğuz",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "node": "^22.15.0",
+    "nodemon": "^3.1.10",
+    "path": "^0.12.7",
+    "pino": "^9.6.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.14"
+  }
+}
