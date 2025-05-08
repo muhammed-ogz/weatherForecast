@@ -1,15 +1,32 @@
-import DetailedWeather from "../components/Home/detailedWeather";
+import DetailedInfo from "../components/Home/DetailedInfo";
+import DetailedWeather from "../components/Home/DetailedWeather";
 import HourlyReport from "../components/Home/HourlyReport";
 import WeeklyReport from "../components/Home/WeeklyReport";
 
-const Home = () => {
+const DashboardLayout = () => {
   return (
-    <div className="items-center min-h-screen bg-gray-900 text-white">
-      <DetailedWeather />
-      <HourlyReport />
-      <WeeklyReport />
+    <div
+      className="
+        grid 
+        grid-cols-1 xl:grid-cols-2 
+        gap-4  
+        px-4 sm:px-6 xl:px-20  
+        justify-items-center xl:justify-items-start 
+        rounded-xl"
+    >
+      {/* Sol Panel */}
+      <div className="xl:col-span-1 space-y-4 w-full">
+        <DetailedWeather />
+        <HourlyReport />
+        <DetailedInfo />
+      </div>
+
+      {/* Sağ Panel */}
+      <div className="xl:col-span-2 w-full mt-2">
+        <WeeklyReport />
+      </div>
     </div>
   );
 };
 
-export default Home;
+export default DashboardLayout;

@@ -4,17 +4,15 @@ import Sidebar from "../components/Sidebar";
 
 const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <>
-      <div className="flex bg-gray-900">
-        <div className="pl-6 pt-8 top-0">
-          <Sidebar />
-        </div>
-        <div>
-          <Header />
-          <main className="p-4">{children}</main>
-        </div>
+    <div className="flex flex-col md:flex-row bg-gray-900 min-h-screen">
+      <div className="flex-shrink-0 hidden md:block p-4 bg-gray-800">
+        <Sidebar />
       </div>
-    </>
+      <div className="flex flex-col flex-1">
+        <Header />
+        <main className="flex-1 p-4">{children}</main>
+      </div>
+    </div>
   );
 };
 

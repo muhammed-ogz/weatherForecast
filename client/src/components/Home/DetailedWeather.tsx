@@ -1,17 +1,39 @@
 import severeThunderstorm from "../../assets/animatedIcons/severe-thunderstorm.svg";
+
 const DetailedWeather = () => {
   return (
-    <div className="relative flex justify-between left-0 ml-5 w-200 h-50 rounded-4xl p-8">
-      <div className="text-4xl ml-1 leading-normal inline-block">İstanbul</div>
-      <div className="absolute ml-1 mt-13 text-sm text-gray-400">
-        Yağmur ihtimali : %100
+    <div
+      className={`
+        relative 
+        w-200 max-w-4xl 
+        min-h-60 sm:h-64 
+        text-white  
+        rounded-4xl 
+        sm:p-6 
+        shadow-lg
+      `}
+    >
+      {/* Sol üst: Şehir */}
+      <div className="absolute top-4 left-4 text-xl sm:text-3xl font-semibold">
+        İstanbul
       </div>
+
+      {/* Şehir altındaki yağış ihtimali */}
+      <div className="absolute top-16 left-4 text-xs sm:text-sm text-gray-400">
+        Yağmur ihtimali: %100
+      </div>
+
+      {/* Sağ üst: Hava ikonu */}
       <img
         src={severeThunderstorm}
         alt="Weather Icon"
-        className="w-40 h-40 mr-0"
+        className="absolute top-4 right-6 sm:right-10 w-16 h-16 sm:w-40 sm:h-40"
       />
-      <div className="absolute bottom-0 left-0 m-9 text-4xl">12°C</div>
+
+      {/* Sol alt: Sıcaklık */}
+      <div className="absolute bottom-4 left-4 text-xl sm:text-4xl font-bold">
+        12°C
+      </div>
     </div>
   );
 };

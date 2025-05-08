@@ -26,6 +26,7 @@ const fetchForecastData = async (): Promise<Forecast[]> => {
 
 const WeeklyReport = () => {
   const [forecastData, setForecastData] = useState<Forecast[]>([]);
+
   useEffect(() => {
     const getForecastData = async () => {
       const data = await fetchForecastData();
@@ -33,54 +34,64 @@ const WeeklyReport = () => {
     };
     getForecastData();
   }, []);
+
+  const getWeatherIcon = (weather: string): string => {
+    switch (weather) {
+      case "Güneşli":
+        return clearDay;
+      case "Yağmurlu":
+        return rainy1;
+      case "Bulutlu":
+        return cloudy;
+      case "Sisli":
+        return fog;
+      case "Karlı":
+        return snowy1;
+      case "Gök Gürültülü":
+        return scatteredThunderstormsDay;
+      default:
+        return clearDay;
+    }
+  };
+
   return (
-    <div className="absolute flex justify-between right-10 top-25 m-4 shadow-lg shadow-black w-110 h-170 bg-gray-700 rounded-4xl p-8">
-      <h3 className="text-gray-400 text-xl leading-none inline-block">
+    <div
+      className="
+        relative
+        sm:absolute sm:right-10 sm:top-6 xl:top-15
+        sm:m-4
+        w-full md:w-3/4 lg:w-3/4 xl:w-125
+        bg-gray-700 rounded-4xl shadow-lg
+        p-6
+        h-auto sm:h-[600px] lg:h-[650px]
+      "
+    >
+      <h3 className="text-gray-400 text-xl sm:text-2xl mb-4">
         7 Günlük Tahmin
       </h3>
-      <div>
-        <ul className="absolute left-5 flex mt-10 flex-col items-center justify-center">
-          {forecastData.map((forecast, index) => {
-            let weatherIcon = clearDay;
-            switch (forecast.weather) {
-              case "Güneşli":
-                weatherIcon = clearDay;
-                break;
-              case "Yağmurlu":
-                weatherIcon = rainy1;
-                break;
-              case "Bulutlu":
-                weatherIcon = cloudy;
-                break;
-              case "Sisli":
-                weatherIcon = fog;
-                break;
-              case "Karlı":
-                weatherIcon = snowy1;
-                break;
-              case "Gök Gürültülü":
-                weatherIcon = scatteredThunderstormsDay;
-                break;
-              default:
-                weatherIcon = clearDay;
-            }
-
-            return (
-              <li
-                key={index}
-                className="flex items-center w-95 h-16 m-2 bg-gray-600 rounded-lg p-4"
-              >
-                <img
-                  src={weatherIcon}
-                  alt={forecast.weather}
-                  className="w-12 h-12 mt-4 mr-4"
-                />
-                <div className="text-sm">{forecast.day}</div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <ul className="divide-y divide-gray-500 text-white max-h-[550px] sm:max-h-[700px] overflow-y-auto">
+        {forecastData.map((forecast, index) => (
+          <li
+            key={index}
+            className="flex items-center justify-between py-3 gap-4"
+          >
+            <div className="flex-shrink-0 text-sm sm:text-base w-28">
+              {forecast.day}
+            </div>
+            <img
+              src={getWeatherIcon(forecast.weather)}
+              alt={forecast.weather}
+              className="w-8 h-8 sm:w-10 sm:h-10"
+            />
+            <div className="flex-grow text-sm sm:text-base text-center">
+              {forecast.weather}
+            </div>
+            <div className="flex-shrink-0 text-sm sm:text-base text-right w-16">
+              {forecast.temperature}°C
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

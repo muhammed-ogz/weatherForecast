@@ -23,8 +23,10 @@ const fetchForecastData = async (): Promise<Forecast[]> => {
     { day: "Pazar", weather: "Sisli", temperature: 10 },
   ];
 };
+
 const HourlyReport = () => {
   const [forecastData, setForecastData] = useState<Forecast[]>([]);
+
   useEffect(() => {
     const getForecastData = async () => {
       const data = await fetchForecastData();
@@ -32,13 +34,23 @@ const HourlyReport = () => {
     };
     getForecastData();
   }, []);
+
   return (
-    <div className="relative flex flex-col ml-6 shadow-lg shadow-black w-200 h-64 bg-gray-700 rounded-4xl p-6">
+    <div
+      className="
+        relative  
+        w-200 
+        max-w-3xl 
+        bg-gray-700 
+        rounded-4xl  
+        p-6
+      "
+    >
       <div className="text-lg font-semibold text-white mb-4">
-        7 Günlük Tahmin
+        Saatlik tahmin
       </div>
       <div className="flex justify-between overflow-x-auto">
-        <ul className="flex">
+        <ul className="flex space-x-4 sm:space-x-6">
           {forecastData.map((forecast, index) => {
             let weatherIcon = clearDay;
 
@@ -69,15 +81,30 @@ const HourlyReport = () => {
             return (
               <li
                 key={index}
-                className="flex flex-col items-center justify-center w-24 h-35 m-1 bg-gray-600 rounded-lg text-white p-4 shadow-md"
+                className="
+                  flex 
+                  flex-col 
+                  items-center 
+                  justify-center 
+                  min-w-[70px] sm:w-23 
+                  h-35 
+                  m-1 
+                  bg-gray-600 
+                  rounded-lg 
+                  text-white 
+                  p-4 
+                  shadow-md
+                "
               >
                 <img
                   src={weatherIcon}
                   alt={forecast.weather}
-                  className="w-14 h-14 mb-2"
+                  className="w-12 h-12 sm:w-14 sm:h-14 mb-2"
                 />
-                <div className="text-sm font-medium">{forecast.day}</div>
-                <div className="text-lg font-bold">
+                <div className="text-xs sm:text-sm font-medium">
+                  {forecast.day}
+                </div>
+                <div className="text-sm sm:text-lg font-bold">
                   {forecast.temperature}°C
                 </div>
               </li>
