@@ -5,8 +5,8 @@ const DetailedWeather = () => {
     <div
       className={`
       relative 
-      w-180 max-w-4xl 
-      min-h-40 xl:min-h-60 sm:h-40 
+      w-full sm:w-180 max-w-4xl 
+      min-h-40 xl:min-h-60 sm:min-h-40 
       text-white  
       rounded-4xl 
       sm:p-6 

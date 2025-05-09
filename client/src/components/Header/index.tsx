@@ -15,7 +15,9 @@ const Header = () => {
             focus:outline-none 
             focus:ring-2 
             focus:ring-gray-500"
-          placeholder="Örnek metin"
+          placeholder="Şehir Araması Yapabilirsiniz"
+          aria-label="Search"
+          aria-describedby="search"
         />
       </div>
     </header>
