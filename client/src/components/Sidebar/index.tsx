@@ -5,7 +5,7 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 
 const Sidebar = () => {
   return (
-    <div className="w-16 fixed rounded-2xl min-h-170 bg-gray-700 text-white p-5 shadow-lg">
+    <div className="w-16 fixed rounded-2xl min-h-200 bg-gray-700 text-white p-5 shadow-lg">
       <ul className="list-none opacity-60 p-0 space-y-8">
         <li className="group">
           <a href="#" className="flex flex-col items-center">

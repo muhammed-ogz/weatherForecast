@@ -58,24 +58,28 @@ const WeeklyReport = () => {
     <div
       className="
         relative
-        sm:absolute sm:right-10 sm:top-6 xl:top-15
+        w-full
+        min-h-100
+        sm:min-h-56
+        sm:absolute sm:right-10 sm:top-6 xl:top-30
         sm:m-4
-        w-full md:w-3/4 lg:w-3/4 xl:w-125
+        mt-10 sm:mt-0
+        md:w-3/4 lg:w-3/4 xl:w-200 
         bg-gray-700 rounded-4xl shadow-lg
         p-6
-        h-auto sm:h-[600px] lg:h-[650px]
+        lg:h-[600px]
       "
     >
       <h3 className="text-gray-400 text-xl sm:text-2xl mb-4">
         7 Günlük Tahmin
       </h3>
-      <ul className="divide-y divide-gray-500 text-white max-h-[550px] sm:max-h-[700px] overflow-y-auto">
+      <ul className="divide-y divide-gray-500 text-white max-h-[400px] sm:max-h-[650px] overflow-y-auto">
         {forecastData.map((forecast, index) => (
           <li
             key={index}
-            className="flex items-center justify-between py-3 gap-4"
+            className="flex flex-wrap items-center justify-between py-3 gap-4"
           >
-            <div className="flex-shrink-0 text-sm sm:text-base w-28">
+            <div className="flex-shrink-0 text-sm sm:text-base w-20 sm:w-28">
               {forecast.day}
             </div>
             <img
@@ -86,7 +90,7 @@ const WeeklyReport = () => {
             <div className="flex-grow text-sm sm:text-base text-center">
               {forecast.weather}
             </div>
-            <div className="flex-shrink-0 text-sm sm:text-base text-right w-16">
+            <div className="flex-shrink-0 text-sm sm:text-base text-right w-12 sm:w-16">
               {forecast.temperature}°C
             </div>
           </li>

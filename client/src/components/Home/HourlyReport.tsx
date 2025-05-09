@@ -39,7 +39,7 @@ const HourlyReport = () => {
     <div
       className="
         relative  
-        w-200 
+        w-full 
         max-w-3xl 
         bg-gray-700 
         rounded-4xl  

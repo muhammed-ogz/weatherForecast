@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col md:flex-row bg-gray-900 min-h-screen">
-      <div className="flex-shrink-0 hidden md:block p-4 bg-gray-800">
+      <div className="hidden md:block ml-5 mt-27">
         <Sidebar />
       </div>
       <div className="flex flex-col flex-1">

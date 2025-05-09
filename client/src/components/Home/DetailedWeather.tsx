@@ -4,13 +4,13 @@ const DetailedWeather = () => {
   return (
     <div
       className={`
-        relative 
-        w-200 max-w-4xl 
-        min-h-60 sm:h-64 
-        text-white  
-        rounded-4xl 
-        sm:p-6 
-        shadow-lg
+      relative 
+      w-180 max-w-4xl 
+      min-h-40 xl:min-h-60 sm:h-40 
+      text-white  
+      rounded-4xl 
+      sm:p-6 
+      shadow-lg
       `}
     >
       {/* Sol üst: Şehir */}

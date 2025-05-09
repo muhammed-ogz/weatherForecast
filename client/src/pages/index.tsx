@@ -22,7 +22,7 @@ const DashboardLayout = () => {
       </div>
 
       {/* Sağ Panel */}
-      <div className="xl:col-span-2 w-full mt-2">
+      <div className="xl:col-span-2">
         <WeeklyReport />
       </div>
     </div>
