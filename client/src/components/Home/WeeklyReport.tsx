@@ -57,18 +57,18 @@ const WeeklyReport = () => {
   return (
     <div
       className="
-        relative
-        w-full
-        min-h-100
-        sm:min-h-56
-        sm:absolute sm:right-10 sm:top-6 xl:top-30
-        sm:m-4
-        mt-10 sm:mt-0
-        md:w-3/4 lg:w-3/4 xl:w-200 
-        bg-gray-700 rounded-4xl shadow-lg
-        p-6
-        lg:h-[600px]
-      "
+            relative
+            w-full
+            min-h-100
+            sm:min-h-56
+            sm:absolute sm:right-10 sm:top-6 xl:top-30
+            sm:m-4
+            mt-10 sm:mt-0
+            md:w-3/4 lg:w-1/2 xl:w-[600px] 
+            bg-gray-700 rounded-4xl shadow-lg
+            p-6
+            lg:h-[600px]
+          "
     >
       <h3 className="text-gray-400 text-xl sm:text-2xl mb-4">
         7 Günlük Tahmin

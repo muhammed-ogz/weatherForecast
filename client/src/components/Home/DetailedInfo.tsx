@@ -1,8 +1,61 @@
+import { useEffect, useState } from "react";
 import { FaSun, FaTemperatureHigh } from "react-icons/fa";
 import { GiWindsock } from "react-icons/gi";
 import { WiHumidity } from "react-icons/wi";
 
+type WeatherData = {
+  RealFeelTemperature: {
+    Metric: {
+      Value: number;
+      Unit: string;
+    };
+    Imperial: {
+      Value: number;
+      Unit: string;
+    };
+  };
+  WeatherText: string;
+  RelativeHumidity: number;
+  Wind: {
+    Speed: {
+      Metric: {
+        Value: number;
+        Unit: string;
+      };
+      Imperial: {
+        Value: number;
+        Unit: string;
+      };
+    };
+  };
+};
+
 const DetailedInfo = () => {
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+
+  const API_KEY = import.meta.env.REACT_APP_ACCUWEATHER_API_KEY; // AccuWeather API anahtarını buraya ekleyin
+  const LOCATION_KEY = "318251"; // İstanbul'un locationKey değeri
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const response = await fetch(
+          `https://dataservice.accuweather.com/currentconditions/v1/${LOCATION_KEY}?apikey=${API_KEY}&language=tr-tr`
+        );
+        const data = await response.json();
+        setWeatherData(data[0]);
+      } catch (error) {
+        console.error("Hava durumu verisi alınamadı:", error);
+      }
+    };
+
+    fetchWeather();
+  }, []);
+
+  if (!weatherData) {
+    return <div className="text-white">Veriler yükleniyor...</div>;
+  }
+
   return (
     <div
       className="
@@ -24,7 +77,19 @@ const DetailedInfo = () => {
             <FaTemperatureHigh className="mr-2 text-base sm:text-xl" />
             <span>Hissedilen Sıcaklık</span>
           </div>
-          <div className="text-lg sm:text-2xl font-bold text-white">8°C</div>
+          <div className="text-lg sm:text-2xl font-bold text-white">
+            {weatherData.RealFeelTemperature.Metric.Value}°C
+          </div>
+        </div>
+
+        <div className="bg-gray-600 rounded-lg p-3 sm:p-4 flex flex-col justify-between shadow-inner">
+          <div className="flex items-center text-gray-300 text-xs sm:text-base mb-2">
+            <FaSun className="mr-2 text-base sm:text-xl" />
+            <span>Hava Durumu</span>
+          </div>
+          <div className="text-lg sm:text-2xl font-bold text-white">
+            {weatherData.WeatherText}
+          </div>
         </div>
 
         <div className="bg-gray-600 rounded-lg p-3 sm:p-4 flex flex-col justify-between shadow-inner">
@@ -32,15 +97,9 @@ const DetailedInfo = () => {
             <WiHumidity className="mr-2 text-lg sm:text-2xl" />
             <span>Nem Oranı</span>
           </div>
-          <div className="text-lg sm:text-2xl font-bold text-white">12%</div>
-        </div>
-
-        <div className="bg-gray-600 rounded-lg p-3 sm:p-4 flex flex-col justify-between shadow-inner">
-          <div className="flex items-center text-gray-300 text-xs sm:text-base mb-2">
-            <FaSun className="mr-2 text-base sm:text-xl" />
-            <span>UV İndex</span>
+          <div className="text-lg sm:text-2xl font-bold text-white">
+            {weatherData.RelativeHumidity}%
           </div>
-          <div className="text-lg sm:text-2xl font-bold text-white">1</div>
         </div>
 
         <div className="bg-gray-600 rounded-lg p-3 sm:p-4 flex flex-col justify-between shadow-inner">
@@ -49,7 +108,7 @@ const DetailedInfo = () => {
             <span>Rüzgar</span>
           </div>
           <div className="text-lg sm:text-2xl font-bold text-white">
-            45 km/h
+            {weatherData.Wind.Speed.Metric.Value} km/h
           </div>
         </div>
       </div>

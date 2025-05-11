@@ -7,7 +7,7 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col md:flex-row bg-gray-900 min-h-screen">
       {/* Desktop Sidebar */}
-      <div className="hidden md:block ml-5 mt-27">
+      <div className="hidden md:block ml-5 mt-10">
         <Sidebar />
       </div>
 
