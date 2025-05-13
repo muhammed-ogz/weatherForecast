@@ -1,6 +1,25 @@
-import severeThunderstorm from "../../assets/animatedIcons/severe-thunderstorm.svg";
+import React from "react";
 
-const DetailedWeather = () => {
+interface DetailedWeatherProps {
+  city: string;
+  temperature: {
+    value: number;
+    unit: string;
+  };
+  precipitationChance: number; // yüzde 0-100
+  weatherIconId: number; // AccuWeather'ın döndürdüğü WeatherIcon ID'si
+}
+
+const DetailedWeather: React.FC<DetailedWeatherProps> = ({
+  city,
+  temperature,
+  precipitationChance,
+  weatherIconId,
+}) => {
+  const iconUrl = `https://developer.accuweather.com/sites/default/files/${String(
+    weatherIconId
+  ).padStart(2, "0")}-s.png`;
+
   return (
     <div
       className={`
@@ -13,26 +32,26 @@ const DetailedWeather = () => {
       shadow-lg
       `}
     >
-      {/* Sol üst: Şehir */}
+      {/* Şehir */}
       <div className="absolute top-4 left-4 text-xl sm:text-3xl font-semibold">
-        İstanbul
+        {city}
       </div>
 
-      {/* Şehir altındaki yağış ihtimali */}
-      <div className="absolute top-16 left-4 text-xs sm:text-sm text-gray-400">
-        Yağmur ihtimali: %100
+      {/* Yağış İhtimali */}
+      <div className="absolute top-12 left-4 text-xs sm:text-sm text-gray-200">
+        Yağmur ihtimali: %{precipitationChance}
       </div>
 
-      {/* Sağ üst: Hava ikonu */}
+      {/* Hava Durumu İkonu */}
       <img
-        src={severeThunderstorm}
+        src={iconUrl}
         alt="Weather Icon"
-        className="absolute top-4 right-6 sm:right-10 w-16 h-16 sm:w-40 sm:h-40"
+        className="absolute right-10 top-1/2 w-35 transform -translate-y-1/2"
       />
 
-      {/* Sol alt: Sıcaklık */}
-      <div className="absolute bottom-4 left-4 text-xl sm:text-4xl font-bold">
-        12°C
+      {/* Sıcaklık */}
+      <div className="absolute bottom-4 left-7 text-xl sm:text-xl text-gray-400">
+        Sıcaklık : {temperature.value}°{temperature.unit}
       </div>
     </div>
   );
