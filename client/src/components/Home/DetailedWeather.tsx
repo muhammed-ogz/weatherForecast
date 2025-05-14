@@ -1,4 +1,5 @@
 import React from "react";
+import { getIconByCode } from "../../icons";
 
 interface DetailedWeatherProps {
   city: string;
@@ -7,18 +8,16 @@ interface DetailedWeatherProps {
     unit: string;
   };
   precipitationChance: number; // yüzde 0-100
-  weatherIconId: number; // AccuWeather'ın döndürdüğü WeatherIcon ID'si
+  weatherIconCode: string;
 }
 
 const DetailedWeather: React.FC<DetailedWeatherProps> = ({
   city,
   temperature,
   precipitationChance,
-  weatherIconId,
+  weatherIconCode,
 }) => {
-  const iconUrl = `https://developer.accuweather.com/sites/default/files/${String(
-    weatherIconId
-  ).padStart(2, "0")}-s.png`;
+  const iconUrl = getIconByCode(weatherIconCode);
 
   return (
     <div
